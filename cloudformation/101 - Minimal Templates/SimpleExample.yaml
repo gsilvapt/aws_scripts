@@ -1,0 +1,13 @@
+# Reference for templating can be found here: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+# Importante note: We can use the same template to update resources - like adding tags after creation. CF figures out 
+# the delta on its own and updates de resources on its own. In the Console choose the **Update Stack Action**.
+Resources:
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-467ca739 # Amazon Linux AMI in N.Virginia
+      # Remember tags can be super important to group resource types and retrieve metrics from AWS.
+      Tags:  
+        - Key: Name
+          Value: A simple example
