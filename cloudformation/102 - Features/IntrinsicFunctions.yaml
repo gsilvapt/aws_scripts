@@ -1,0 +1,13 @@
+# To pass an intrinsic function, we use the following format:
+# JSON: {"Fn::Join": [ ":", [ "a", "b", "c" ] ] }
+# YAML: !Join [ delimiter, [comma-delimited list of values] ]
+# List of functions: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference.html
+Resources:
+  Ec2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-43874721 # Amazon Linux AMI in Sydney
+      Tags:
+        - Key: "Name"
+          Value: !Join [ " ", [ EC2, Instance, with, Fn, Join ] ] # => EC2 instance with Fn Join
